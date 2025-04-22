@@ -1,15 +1,16 @@
-from ListaEnlazada import ListaEnlazada
-from RegistroMeteorologico import RegistroMeteorologico
-
-
 class EstacionMeteorologica:
     def __init__(self):
-        self.registros = ListaEnlazada()
+        self.registros = []
 
-    def agregar_registro(self, temperatura, humedad, presion):
-        registro = RegistroMeteorologico(temperatura, humedad, presion)
-        self.registros.agregar(registro)
+    def agregar_registro(self, temperatura, humedad, presion, region):
+        registro = {
+            "temperatura": temperatura,
+            "humedad": humedad,
+            "presion": presion,
+            "region": region
+        }
+        self.registros.append(registro)
 
     def mostrar_registros(self):
-        print("Registros meteorológicos:")
-        self.registros.mostrar()
+        for registro in self.registros:
+            print(f"Región: {registro['region']}, Temperatura: {registro['temperatura']}°C, Humedad: {registro['humedad']}%, Presión: {registro['presion']} hPa")
